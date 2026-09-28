@@ -1,9 +1,10 @@
 import React from "react";
 import Badge from "../common/Badge";
+import Button from "../common/Button";
 import EmptyState from "../common/EmptyState";
 import { CalendarClock } from "lucide-react";
 
-export default function BookingTable({ bookings }) {
+export default function BookingTable({ bookings, onCancel }) {
   if (bookings.length === 0) {
     return (
       <EmptyState
@@ -24,6 +25,7 @@ export default function BookingTable({ bookings }) {
             <th>Slot</th>
             <th>Scheduled for</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +36,11 @@ export default function BookingTable({ bookings }) {
               <td className="mono">{b.slotCode}</td>
               <td>{new Date(b.scheduledFor).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}</td>
               <td><Badge status={b.status} /></td>
+              <td>
+                {b.status === "upcoming" && onCancel && (
+                  <Button variant="danger" size="sm" onClick={() => onCancel(b.id)}>Cancel</Button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
