@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { SquareParking, TriangleAlert } from 'lucide-react';
 import EmptyState from '../common/EmptyState';
 import Button from '../common/Button';
@@ -9,7 +8,7 @@ export default function SlotAssignment({ slot, onConfirm }) {
     return (
       <EmptyState
         icon={TriangleAlert}
-        title="No slot available"
+        title="No Slot Available"
         message="Every slot for this vehicle type is currently full. Try again once a spot opens up."
       />
     );

@@ -36,14 +36,14 @@ export const parkingSlots = [
   { id: 1, code: "A-01", zone: "A", type: "Car", status: "occupied", vehicleId: 4 },
   { id: 2, code: "A-02", zone: "A", type: "Car", status: "available" },
   { id: 3, code: "A-03", zone: "A", type: "Car", status: "occupied", vehicleId: 1 },
-  { id: 4, code: "A-04", zone: "A", type: "Car", status: "available" },
+  { id: 4, code: "A-04", zone: "A", type: "Car", status: "reserved" },
   { id: 5, code: "A-05", zone: "A", type: "Car", status: "available" },
   { id: 6, code: "A-06", zone: "A", type: "Car", status: "reserved" },
   { id: 7, code: "B-01", zone: "B", type: "Motorcycle", status: "occupied", vehicleId: 2 },
   { id: 8, code: "B-02", zone: "B", type: "Motorcycle", status: "available" },
   { id: 9, code: "B-03", zone: "B", type: "Motorcycle", status: "available" },
   { id: 10, code: "B-04", zone: "B", type: "Motorcycle", status: "reserved" },
-  { id: 11, code: "C-01", zone: "C", type: "Truck", status: "available" },
+  { id: 11, code: "C-01", zone: "C", type: "Truck", status: "reserved" },
   { id: 12, code: "C-02", zone: "C", type: "Truck", status: "occupied", vehicleId: 3 },
   { id: 13, code: "C-03", zone: "C", type: "Truck", status: "available" },
 ];
@@ -54,19 +54,3 @@ export const bookings = [
   { id: 3, numberPlate: "DFV-2201", type: "Motorcycle", scheduledFor: "2026-09-22T09:00:00", slotCode: "B-02", status: "completed" },
   { id: 4, numberPlate: "LMP-6690", type: "Car", scheduledFor: "2026-09-22T11:00:00", slotCode: "A-02", status: "cancelled" },
 ];
-
-export const revenueByDay = [
-  { day: "Mon", amount: 640 },
-  { day: "Tue", amount: 510 },
-  { day: "Wed", amount: 720 },
-  { day: "Thu", amount: 480 },
-  { day: "Fri", amount: 890 },
-  { day: "Sat", amount: 1120 },
-  { day: "Sun", amount: 950 },
-];
-
-export const revenueSummary = {
-  today: 480,
-  week: 5310,
-  month: 21460,
-};

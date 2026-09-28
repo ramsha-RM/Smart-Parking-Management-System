@@ -225,3 +225,9 @@
 .modal__body {
   padding: 20px;
 }
+
+.form-error {
+  color: var(--occupied);
+  font-size: 13px;
+  margin-top: 12px;
+}

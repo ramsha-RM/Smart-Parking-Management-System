@@ -1,8 +1,9 @@
 import React from "react";
 import ParkingSlot from "./ParkingSlot";
-import { vehicles } from "../../data/vehicle-data.js";
+import useParkingStore from "../../Store/useParkingStore";
 
 export default function SlotGrid({ slots }) {
+  const vehicles = useParkingStore((s) => s.vehicles);
   const zone = [...new Set(slots.map((s) => s.zone))];
 
   return (

@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import EntryForm from "./entryForm";
 import SlotAssignment from "./SlotAssignment";
-import { parkingSlots } from "../../data/vehicle-data.js";
+import useParkingStore from "../../Store/useParkingStore";
 import "./entry.css";
 
 export default function VehicleEntry() {
-  const [checked, setChecked] = useState(false);
-  const [match, setMatch] = useState(null);
+  const findSlotFor = useParkingStore((s) => s.findSlotFor);
+  const parkVehicle = useParkingStore((s) => s.parkVehicle);
 
-  function handleCheck({ type }) {
-    const slot = parkingSlots.find((s) => s.type === type && s.status === "available");
-    setMatch(slot || null);
-    setChecked(true);
+  const [pending, setPending] = useState(null);
+  const [message, setMessage] = useState("");
+
+  function handleCheck({ plate, type }) {
+    setMessage("");
+    setPending({ plate, type, slot: findSlotFor(plate, type) });
+  }
+
+  function handleConfirm() {
+    const result = parkVehicle({ numberPlate: pending.plate, type: pending.type });
+    setMessage(
+      result.success
+        ? `${result.vehicle.numberPlate} parked at slot ${result.vehicle.slotCode}`
+        : result.message
+    );
+    setPending(null);
   }
 
   return (
@@ -31,10 +43,12 @@ export default function VehicleEntry() {
 
         <div className="panel entry-page__result">
           <h3>Slot assignment</h3>
-          {checked ? (
-            <SlotAssignment slot={match} onConfirm={() => setChecked(false)} />
+          {pending ? (
+            <SlotAssignment slot={pending.slot} onConfirm={handleConfirm} />
           ) : (
-            <p className="entry-page__hint">Enter a plate and vehicle type to find the nearest open slot.</p>
+            <p className="entry-page__hint">
+              {message || "Enter a plate and vehicle type to find the nearest open slot."}
+            </p>
           )}
         </div>
       </div>

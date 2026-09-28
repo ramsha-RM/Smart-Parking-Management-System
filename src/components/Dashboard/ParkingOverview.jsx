@@ -1,16 +1,17 @@
 import React from "react";
 
-import { parkingSlots } from "../../data/vehicle-data.js";
+import useParkingStore from "../../Store/useParkingStore";
 
 export default function ParkingOverview() {
-  const zones = ["A", "B", "C"];
+  const allSlots = useParkingStore((s) => s.slots);
+  const zones = [...new Set(allSlots.map((s) => s.zone))];
 
   return (
     <div className="panel overview">
       <h3>Zone occupancy</h3>
       <div className="overview__list">
         {zones.map((zone) => {
-          const slots = parkingSlots.filter((s) => s.zone === zone);
+          const slots = allSlots.filter((s) => s.zone === zone);
           const occupied = slots.filter((s) => s.status !== "available").length;
           const pct = Math.round((occupied / slots.length) * 100);
           return (

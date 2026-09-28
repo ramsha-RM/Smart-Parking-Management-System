@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { sidebarLinks } from '../data/vehicle-data.js';
+import { sidebarLinks } from '../data/MockData.js';
 import './sidebar.css';
 
 export default function Sidebar({ open = false }) {

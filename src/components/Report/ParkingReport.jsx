@@ -1,7 +1,10 @@
 import React from "react";
-import { parkingSlots, vehicleTypes } from "../../data/vehicle-data.js";
+import { vehicleTypes } from "../../data/mockData.js";
+import useParkingStore from "../../Store/useParkingStore";
 
 export default function ParkingReport() {
+  const parkingSlots = useParkingStore((s) => s.slots);
+
   return (
     <div className="parking-report">
       <div className="report-card">

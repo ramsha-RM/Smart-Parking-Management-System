@@ -1,9 +1,11 @@
 import React from "react";
 
 import Badge from "../common/Badge";
-import { vehicles } from "../../data/vehicle-data.js";
+import useParkingStore from "../../Store/useParkingStore";
 
 export default function RecentVehicles() {
+  const vehicles = useParkingStore((s) => s.vehicles);
+
   const recent = [...vehicles]
     .sort((a, b) => new Date(b.entryTime) - new Date(a.entryTime))
     .slice(0, 5);

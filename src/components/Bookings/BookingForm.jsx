@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "../common/Select";
 import Button from "../common/Button";
-import { vehicleTypes } from "../../data/vehicle-data.js";
+import { vehicleTypes } from "../../data/MockData.js";
 
 export default function BookingForm({ onSubmit }) {
   const [plate, setPlate] = useState("");

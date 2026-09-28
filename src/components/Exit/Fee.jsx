@@ -2,11 +2,8 @@ import React from "react";
 import Button from "../common/Button";
 import EmptyState from "../common/EmptyState";
 import { SearchX } from "lucide-react";
-import { rates } from "../../data/vehicle-data.js";
-
-function hoursElapsed(entry) {
-  return (new Date() - new Date(entry)) / 3600000;
-}
+import { rates } from "../../data/mockData.js";
+import { billedHours } from "../../utils/fee";
 
 export default function FeeSummary({ vehicle, onComplete }) {
   if (vehicle === undefined) {
@@ -25,10 +22,9 @@ export default function FeeSummary({ vehicle, onComplete }) {
     );
   }
 
-  const hours = hoursElapsed(vehicle.entryTime);
-  const billedHours = Math.max(1, Math.ceil(hours));
+  const hours = billedHours(vehicle.entryTime);
   const rate = rates[vehicle.type];
-  const fee = billedHours * rate;
+  const fee = hours * rate;
 
   return (
     <div className="fee-summary">
@@ -46,7 +42,7 @@ export default function FeeSummary({ vehicle, onComplete }) {
       </div>
       <div className="fee-summary__row">
         <span>Duration</span>
-        <span className="mono">{billedHours}h billed</span>
+        <span className="mono">{hours}h billed</span>
       </div>
       <div className="fee-summary__row">
         <span>Rate</span>

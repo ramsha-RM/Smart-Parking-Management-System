@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Select from "../common/Select";
 import Button from "../common/Button";
-import { vehicleTypes } from "../../data/vehicle-data.js";
+import { vehicleTypes } from "../../data/mockData.js";
 
 export default function EntryForm({ onCheck }) {
   const [plate, setPlate] = useState("");
