@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "../common/Select";
 import Button from "../common/Button";
-import { vehicleTypes } from "../../data/MockData.js";
+import { vehicleTypes } from "../../data/mockData.js";
 
 export default function VehicleForm({ onSubmit }) {
   const [plate, setPlate] = useState("");

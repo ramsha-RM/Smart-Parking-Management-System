@@ -35,11 +35,13 @@
 
 .sidebar__link:hover {
   color: var(--text);
+  border-left: 3px solid var(--border);
   background: var(--panel-alt);
 }
 
 .sidebar__link--active {
   color: var(--accent);
+  border-left: 3px solid var(--accent);
   background: var(--accent-soft);
 }
 
